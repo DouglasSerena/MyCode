@@ -6,7 +6,7 @@ func sort(list []int, begin int, end int) {
 	left := begin
 	right := end
 	for left < right {
-		if list[left] < pivot {
+		if list[left] <= pivot {
 			left += 1
 		}
 
@@ -22,7 +22,7 @@ func sort(list []int, begin int, end int) {
 	}
 
 	if left < end {
-		sort(list, left+1, end)
+		sort(list, left, end)
 	}
 
 	if right > begin {
