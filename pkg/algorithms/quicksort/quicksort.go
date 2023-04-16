@@ -1,35 +1,34 @@
 package quicksort
 
-func sort(list []int, begin int, end int) {
-	pivot := list[(begin+end)/2]
+func partition(list []int, left, right int) int {
+	pivot := list[right]
+	index := left
 
-	left := begin
-	right := end
-	for left < right {
-		if list[left] <= pivot {
-			left += 1
-		}
+	for i := left; i < right; i++ {
+        v := list[i]
+		if v <= pivot {
+			if i != index {
+				list[i], list[index] = list[index], list[i]
+			}
 
-		if list[right] > pivot {
-			right -= 1
-		}
-
-		if left < right {
-			aux := list[left]
-			list[left] = list[right]
-			list[right] = aux
+			index++
 		}
 	}
 
-	if left < end {
-		sort(list, left, end)
-	}
+	list[right], list[index] = list[index], list[right]
 
-	if right > begin {
-		sort(list, begin, right)
+	return index
+}
+
+func quicksort(list []int, left, right int) {
+	if left < right {
+		pivot := partition(list, left, right)
+
+		quicksort(list, pivot+1, right)
+		quicksort(list, left, pivot-1)
 	}
 }
 
-func Sort(list []int) {
-	sort(list, 0, len(list)-1)
+func Quicksort(list []int) {
+	quicksort(list, 0, len(list)-1)
 }
