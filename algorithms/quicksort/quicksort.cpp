@@ -2,28 +2,25 @@
 
 #include "./quicksort.h"
 
+void Quicksort::swap(int *vector, int from, int to)
+{
+    int value = vector[from];
+    vector[from] = vector[to];
+    vector[to] = value;
+};
+
 int Quicksort::partition(int *vector, int left, int right)
 {
     int pivot = vector[right];
-    int pointer = left;
+    int offset = left;
 
     for (int index = left; index < right; index++)
-    {
         if (vector[index] < pivot)
-        {
-            int aux = vector[pointer];
-            vector[pointer] = vector[index];
-            vector[index] = aux;
+            Quicksort::swap(vector, index, offset++);
 
-            pointer += 1;
-        }
-    }
+    Quicksort::swap(vector, right, offset);
 
-    int aux = vector[pointer];
-    vector[pointer] = vector[right];
-    vector[right] = aux;
-
-    return pointer;
+    return offset;
 }
 
 void Quicksort::sort(int *vector, int left, int right)
@@ -35,4 +32,4 @@ void Quicksort::sort(int *vector, int left, int right)
         Quicksort::sort(vector, pivot + 1, right);
         Quicksort::sort(vector, left, pivot - 1);
     }
-}
+};

@@ -1,34 +1,11 @@
-compiler       = g++
-compiler_flags = -std=c++23
-debug		   = true
+all: clean build
 
-executable   = main
-sources      = $(wildcard src/*.cpp)
-objects      = $(sources:.cpp=.o)
-headers      = $(sources:.cpp=.h)
-dependencies = $(sources:.cpp=.d)
-
-ifeq ($(debug), true)
-	compiler_flags += -g
-endif
-
-.PHONY: all
-all: $(executable)
-
-$(executable): $(objects)
-	$(compiler) -o $@ $^ $(compiler_flags)
-
--include $(dependencies)
-
-%.d: %.cpp
-	@$(compiler) $(compiler_flags) $< -MM -MT $(@:.d=.o) >$@
-
-%.o: %.cpp $(headers)
-	$(compiler) $(compiler_flags) -c $< -o $@
+build:
+	clang++ -include quicksort.h -c quicksort.cpp
+	clang++ -o main main.cpp quicksort.o
 
 run: all
-	./$(executable)
+	./main
 
-.PHONY: clean
 clean:
-	rm -f $(objects) $(executable) $(dependencies)
+	rm -f *.o main
