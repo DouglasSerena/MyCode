@@ -17,8 +17,19 @@ private:
      */
     T *values;
 
+    /**
+     * Index of the first element of the queue
+     */
     int first;
+
+    /**
+     * Index of the last element of the queue
+     */
     int last;
+
+    /**
+     * Queue size
+     */
     int size;
 
     /**
