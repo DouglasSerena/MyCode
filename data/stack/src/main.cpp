@@ -45,6 +45,7 @@ int main()
     // Checks if the stack is being emptied
     stack->clear();
 
+    assert(stack->getSize() == 0);
     assert(stack->isFull() == false);
     assert(stack->isEmpty() == true);
 
