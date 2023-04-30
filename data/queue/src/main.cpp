@@ -11,8 +11,9 @@ int main()
     Queue<int> *queue = new Queue<int>(size);
 
     // Check queue initialization
-    assert(queue->getMaxSize() == 5);
     assert(queue->getSize() == 0);
+    assert(queue->isEmpty() == true);
+    assert(queue->getMaxSize() == 5);
 
     // Checks if the value is pushed onto the queue
     for (int i = 0; i < size; i++)
