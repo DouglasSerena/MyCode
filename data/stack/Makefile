@@ -1,13 +1,22 @@
-all: clean dirs build
+cc      = g++
+sources = $(wildcard src/*.cpp) $(wildcard src/**/*.cpp) $(wildcard src/**/**/*.cpp)
+objects = $(sources:.cpp=.o)
+bin     = bin/main
 
-build:
-	g++ src/main.cpp src/stack.cpp -o bin/main
+all: clean dirs build 
 
+%.o: %.cpp
+	$(cc) -c $< -o $@
+
+build: $(objects)
+	$(cc) $(objects) -o $(bin)
+	mv $(objects) bin/objects/
+	
 run: all
-	./bin/main
+	./$(bin)
 
 dirs:
-	mkdir bin
+	mkdir -p bin/ bin/objects/
 
 clean:
-	rm -rf bin build
+	rm -rf bin
