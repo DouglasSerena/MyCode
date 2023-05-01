@@ -68,8 +68,8 @@ ListError List<T>::insert(int index, T value)
 template <typename T>
 T List<T>::pop()
 {
-    T value = at(-1);
-    this->remove(this->size - 1, 1);
+    T value = this->at(-1);
+    this->removeAt(this->size - 1, 1);
 
     return value;
 }
@@ -77,14 +77,17 @@ T List<T>::pop()
 template <typename T>
 T List<T>::shift()
 {
-    T value = at(0);
-    this->remove(0, 1);
+    T value = this->at(0);
+    this->removeAt(0, 1);
 
     return value;
 }
 
 template <typename T>
-ListError List<T>::remove(int index, int count)
+ListError List<T>::remove(T index, int count = 1) { return this->removeAt(this->indexOf(index), count); }
+
+template <typename T>
+ListError List<T>::removeAt(int index, int count = 1)
 {
     if (count > this->size)
         return ListError::DeleteOverflow;

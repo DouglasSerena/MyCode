@@ -36,21 +36,61 @@ public:
      */
     int getSize();
 
+    /**
+     * New elements to add to the list.
+     */
     ListError push(T value);
+
+    /**
+     * Inserts new elements at the start of an list.
+     */
     ListError unshift(T value);
+
+    /**
+     * Inserts the elements of a collection into the list at the specified index.
+     */
     ListError insert(int index, T value);
 
+    /**
+     * Removes the last element from an list and returns it.
+     */
     T pop();
-    T shift();
-    ListError remove(int index, int count);
 
+    /**
+     * Removes the first element from an list and returns it.
+     */
+    T shift();
+
+    /**
+     * Removes the element at the specified index of the list.
+     */
+    ListError remove(T value, int count = 1);
+
+    /**
+     * Removes the element at the specified index of the list.
+     */
+    ListError removeAt(int index, int count = 1);
+
+    /**
+     * Returns a copy of a section of an list, specified by a range of indices.
+     */
     List<T> *slice();
     List<T> *slice(int start);
     List<T> *slice(int start, int end);
 
+    /**
+     * Returns the element at the specified index in the list.
+     */
     T at(int index);
+
+    /**
+     * Returns the index of the first occurrence of a value in an list.
+     */
     int indexOf(T value);
 
+    /**
+     * Performs the specified action for each element in an list.
+     */
     void forEach(Predicate<T> predicate);
 
     /**

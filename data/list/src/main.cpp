@@ -37,7 +37,7 @@ int main()
     assert(list->getSize() == 9);
 
     // Checks if the value is removed from the list
-    list->remove(0, 3);
+    list->removeAt(0, 3);
 
     assert(list->getSize() == 6);
 
