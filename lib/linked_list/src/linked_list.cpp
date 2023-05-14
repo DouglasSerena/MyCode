@@ -26,7 +26,10 @@ template <typename T>
 LinkedListNode<T> *LinkedList<T>::getLast() { return this->tail; }
 
 template <typename T>
-void LinkedList<T>::insertFirst(T value) { return this->insertFirst(new LinkedListNode(value)); }
+void LinkedList<T>::insertFirst(T value) { return this->insertFirst(new LinkedListNode<T>(value)); }
+
+template <typename T>
+void LinkedList<T>::insertFirst(LinkedListNode<T> node) { return this->insertFirst(new LinkedListNode<T>(node.getValue())); }
 
 template <typename T>
 void LinkedList<T>::insertFirst(LinkedListNode<T> *node)
@@ -45,7 +48,10 @@ void LinkedList<T>::insertFirst(LinkedListNode<T> *node)
 }
 
 template <typename T>
-void LinkedList<T>::insertLast(T value) { return this->insertLast(new LinkedListNode(value)); }
+void LinkedList<T>::insertLast(T value) { return this->insertLast(new LinkedListNode<T>(value)); }
+
+template <typename T>
+void LinkedList<T>::insertLast(LinkedListNode<T> node) { return this->insertLast(new LinkedListNode<T>(node.getValue())); }
 
 template <typename T>
 void LinkedList<T>::insertLast(LinkedListNode<T> *node)
@@ -86,19 +92,6 @@ LinkedListNode<T> *LinkedList<T>::find(T value)
 }
 
 template <typename T>
-void LinkedList<T>::forEach(Predicate<T> predicate)
-{
-    int index = 0;
-    LinkedListNode<int> *node = this->head;
-
-    while (node != nullptr)
-    {
-        predicate(node->getValue(), index++);
-        node = node->getNext();
-    }
-}
-
-template <typename T>
 bool LinkedList<T>::isEmpty() { return this->head == nullptr; }
 
 template <typename T>
@@ -106,13 +99,6 @@ bool LinkedList<T>::isNotEmpty() { return this->head != nullptr; }
 
 template <typename T>
 bool LinkedList<T>::contains(T value) { return this->find(value) != nullptr; }
-
-template <typename T>
-void LinkedList<T>::clear()
-{
-    this->head = nullptr;
-    this->tail = nullptr;
-}
 
 template <typename T>
 std::string LinkedList<T>::toString()
@@ -140,3 +126,16 @@ std::string LinkedList<T>::toString()
 
     return output;
 }
+
+template <typename T>
+void LinkedList<T>::clear()
+{
+    this->head = nullptr;
+    this->tail = nullptr;
+}
+
+template <typename T>
+LinkedListIterator<T> LinkedList<T>::begin() { return LinkedListIterator<T>(this->head); }
+
+template <typename T>
+LinkedListIterator<T> LinkedList<T>::end() { return LinkedListIterator<T>(nullptr); }

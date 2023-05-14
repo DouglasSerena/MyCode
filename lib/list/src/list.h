@@ -76,9 +76,9 @@ public:
     /**
      * Returns a copy of a section of an list, specified by a range of indices.
      */
-    List<T> *slice();
-    List<T> *slice(int start);
-    List<T> *slice(int start, int end);
+    List<T> slice();
+    List<T> slice(int start);
+    List<T> slice(int start, int end);
 
     /**
      * Returns the element at the specified index in the list.

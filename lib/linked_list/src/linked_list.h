@@ -4,9 +4,7 @@
 #include <string>
 
 #include "./linked_list_node.h"
-
-template <typename T>
-using Predicate = void (*)(T value, int index);
+#include "./linked_list_iterator.h"
 
 template <typename T>
 class LinkedList
@@ -30,17 +28,14 @@ public:
     LinkedListNode<T> *getLast();
 
     void insertFirst(T value);
+    void insertFirst(LinkedListNode<T> node);
     void insertFirst(LinkedListNode<T> *node);
 
     void insertLast(T value);
+    void insertLast(LinkedListNode<T> node);
     void insertLast(LinkedListNode<T> *node);
 
     LinkedListNode<T> *find(T value);
-
-    /**
-     * Performs the specified action for each element in an list.
-     */
-    void forEach(Predicate<T> predicate);
 
     /**
      * Determines whether the queue is empty
@@ -66,6 +61,9 @@ public:
      * 	Removes all objects from the List .
      */
     void clear();
+
+    LinkedListIterator<T> begin();
+    LinkedListIterator<T> end();
 };
 
 #endif

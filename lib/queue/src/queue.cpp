@@ -85,14 +85,6 @@ bool Queue<T>::contains(T value)
 }
 
 template <typename T>
-void Queue<T>::clear()
-{
-    this->first = -1;
-    this->last = -1;
-    this->size = 0;
-}
-
-template <typename T>
 std::string Queue<T>::toString()
 {
     std::string output = "[";
@@ -113,4 +105,12 @@ std::string Queue<T>::toString()
     output += "]";
 
     return output;
+}
+
+template <typename T>
+void Queue<T>::clear()
+{
+    this->first = -1;
+    this->last = -1;
+    this->size = 0;
 }

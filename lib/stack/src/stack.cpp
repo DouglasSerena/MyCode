@@ -70,9 +70,6 @@ bool Stack<T>::contains(T value)
 }
 
 template <typename T>
-void Stack<T>::clear() { this->index = -1; }
-
-template <typename T>
 std::string Stack<T>::toString()
 {
     std::string output = "[";
@@ -94,3 +91,6 @@ std::string Stack<T>::toString()
 
     return output;
 }
+
+template <typename T>
+void Stack<T>::clear() { this->index = -1; }

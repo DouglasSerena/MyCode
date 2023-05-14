@@ -123,16 +123,16 @@ ListError List<T>::removeAt(int index, int count)
 }
 
 template <typename T>
-List<T> *List<T>::slice() { return this->slice(0, this->size); }
+List<T> List<T>::slice() { return this->slice(0, this->size); }
 
 template <typename T>
-List<T> *List<T>::slice(int start) { return this->slice(start, this->size); }
+List<T> List<T>::slice(int start) { return this->slice(start, this->size); }
 
 template <typename T>
-List<T> *List<T>::slice(int start, int end)
+List<T> List<T>::slice(int start, int end)
 {
     if (start > end)
-        return new List<T>();
+        return List<T>();
 
     int size = end - start;
     T *values = (T *)malloc(sizeof(T) * size);
@@ -141,7 +141,7 @@ List<T> *List<T>::slice(int start, int end)
     for (int i = start; i < end; i++)
         values[index] = this->values[i];
 
-    return new List<T>(values, size);
+    return List<T>(values, size);
 }
 
 template <typename T>
@@ -189,14 +189,6 @@ bool List<T>::contains(T value)
 }
 
 template <typename T>
-void List<T>::clear()
-{
-    this->size = 0;
-
-    free(this->values);
-}
-
-template <typename T>
 std::string List<T>::toString()
 {
     std::string output = "[";
@@ -217,4 +209,12 @@ std::string List<T>::toString()
     output += "]";
 
     return output;
+}
+
+template <typename T>
+void List<T>::clear()
+{
+    this->size = 0;
+
+    free(this->values);
 }
