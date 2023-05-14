@@ -1,6 +1,8 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
+#include <string>
+
 enum QueueError
 {
     None = 0,
@@ -80,6 +82,11 @@ public:
      * Determines whether an element is in the Queue.
      */
     bool contains(T value);
+
+    /**
+     * Returns a string representation of the Queue.
+     */
+    std::string toString();
 
     /**
      * 	Removes all objects from the Queue.

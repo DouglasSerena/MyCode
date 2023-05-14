@@ -62,7 +62,6 @@ ListError List<T>::insert(int index, T value)
 
     this->values = values;
 
-
     return ListError::None;
 }
 
@@ -85,10 +84,10 @@ T List<T>::shift()
 }
 
 template <typename T>
-ListError List<T>::remove(T index, int count = 1) { return this->removeAt(this->indexOf(index), count); }
+ListError List<T>::remove(T index, int count) { return this->removeAt(this->indexOf(index), count); }
 
 template <typename T>
-ListError List<T>::removeAt(int index, int count = 1)
+ListError List<T>::removeAt(int index, int count)
 {
     if (count > this->size)
         return ListError::DeleteOverflow;
@@ -195,4 +194,27 @@ void List<T>::clear()
     this->size = 0;
 
     free(this->values);
+}
+
+template <typename T>
+std::string List<T>::toString()
+{
+    std::string output = "[";
+
+    for (int i = 0; i < this->getSize(); i++)
+    {
+        if (i == 0)
+            output += " ";
+
+        output += std::to_string(this->values[i]);
+
+        if (i != this->getSize() - 1)
+            output += ", ";
+        else
+            output += " ";
+    }
+
+    output += "]";
+
+    return output;
 }

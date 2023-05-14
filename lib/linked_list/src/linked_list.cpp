@@ -113,3 +113,30 @@ void LinkedList<T>::clear()
     this->head = nullptr;
     this->tail = nullptr;
 }
+
+template <typename T>
+std::string LinkedList<T>::toString()
+{
+    std::string output = "[";
+
+    LinkedListNode<T> *node = this->head;
+
+    while (node != nullptr)
+    {
+        if (node->getPrevious() == nullptr)
+            output += " ";
+
+        output += std::to_string(node->getValue());
+
+        if (node->getNext() != nullptr)
+            output += ", ";
+        else
+            output += " ";
+
+        node = node->getNext();
+    }
+
+    output += "]";
+
+    return output;
+}

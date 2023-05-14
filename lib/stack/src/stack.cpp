@@ -71,3 +71,26 @@ bool Stack<T>::contains(T value)
 
 template <typename T>
 void Stack<T>::clear() { this->index = -1; }
+
+template <typename T>
+std::string Stack<T>::toString()
+{
+    std::string output = "[";
+
+    for (int i = 0; i < this->getSize(); i++)
+    {
+        if (i == 0)
+            output += " ";
+
+        output += std::to_string(this->values[i]);
+
+        if (i != this->getSize() - 1)
+            output += ", ";
+        else
+            output += " ";
+    }
+
+    output += "]";
+
+    return output;
+}

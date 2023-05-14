@@ -1,6 +1,8 @@
 #ifndef STACK_H
 #define STACK_H
 
+#include <string>
+
 enum StackError
 {
     None = 0,
@@ -70,6 +72,11 @@ public:
      * Determines whether an element is in the Stack.
      */
     bool contains(T value);
+
+    /**
+     * Returns a string that represents the current object.
+     */
+    std::string toString();
 
     /**
      * 	Removes all objects from the Stack.

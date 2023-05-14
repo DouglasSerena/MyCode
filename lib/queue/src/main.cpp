@@ -10,7 +10,7 @@ int main()
 
     Queue<int> *queue = new Queue<int>(size);
 
-    // Check queue initialization
+    // Checksqueue initialization
     assert(queue->getSize() == 0);
     assert(queue->isEmpty() == true);
     assert(queue->getMaxSize() == 5);
@@ -33,11 +33,14 @@ int main()
     assert(queue->contains(4) == true);
     assert(queue->contains(10) == false);
 
-    // Check if the queue overflows
+    // Checksif the queue overflows
     assert(queue->enqueue(13) == QueueError::IsFull);
     assert(queue->getSize() == size);
 
-    // Check if the values ​​are unquenched in order
+    // Checksif the string representing the queue is correct
+    assert(queue->toString() == "[ 3, 2, 4, 6, 0 ]");
+
+    // Checksif the values ​​are unquenched in order
     for (int i = 0; i < size; i++)
         assert(order[i] == queue->dequeue());
 

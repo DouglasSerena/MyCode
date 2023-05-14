@@ -21,13 +21,9 @@ int main()
 
     LinkedListNode<int> *node = list->getFirst();
 
-    list->forEach([](int value, int index)
-                  { printf("V: %d\n", value); });
+    assert(list->toString() == "[ 1, 10, 2, 11, 3, 4 ]");
 
     list->clear();
-
-    list->forEach([](int value, int index)
-                  { printf("V: %d\n", value); });
 
     return 0;
 }

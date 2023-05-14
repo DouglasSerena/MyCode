@@ -7,7 +7,7 @@ int main()
 {
     Stack<int> *stack = new Stack<int>(5);
 
-    // Check stack initialization
+    // Checksstack initialization
     assert(stack->getMaxSize() == 5);
     assert(stack->getSize() == 0);
 
@@ -38,9 +38,12 @@ int main()
     assert(stack->isFull() == true);
     assert(stack->isEmpty() == false);
 
-    // Check if the stack overflows
+    // Checksif the stack overflows
     assert(stack->push(13) == StackError::IsFull);
     assert(stack->getSize() == 5);
+
+    // Checksif the string representing the stack is correct
+    assert(stack->toString() == "[ 2, 6, 10, 11, 12 ]");
 
     // Checks if the stack is being emptied
     stack->clear();

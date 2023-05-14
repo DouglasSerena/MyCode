@@ -7,7 +7,7 @@ int main()
 {
     List<int> *list = new List<int>();
 
-    // Check list initialization
+    // Checkslist initialization
     assert(list->getSize() == 0);
     assert(list->isEmpty() == true);
 
@@ -61,6 +61,14 @@ int main()
 
     // Checks if the list is not empty
     assert(list->isNotEmpty() == true);
+
+    // Checksif remove value from the list
+    list->remove(10);
+
+    assert(list->getSize() == 5);
+
+    // Checks if the string representing the list is correct
+    assert(list->toString() == "[ 5, 0, 1, 2, 3 ]");
 
     // Checks if list is cleared
     list->clear();
