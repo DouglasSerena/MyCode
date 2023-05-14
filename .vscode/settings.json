@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "type_traits": "cpp",
-        "cstddef": "cpp"
+        "cstddef": "cpp",
+        "stdlib.h": "c",
+        "coroutine": "cpp"
     }
 }
