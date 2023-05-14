@@ -62,7 +62,7 @@ int main()
     // Checks if the list is not empty
     assert(list.isNotEmpty() == true);
 
-    // Checksif remove value from the list
+    // Checks if remove value from the list
     list.remove(10);
 
     assert(list.getSize() == 5);

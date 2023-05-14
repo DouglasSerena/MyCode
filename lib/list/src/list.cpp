@@ -9,6 +9,7 @@ template <typename T>
 List<T>::List()
 {
     this->size = 0;
+    this->values = (T *)malloc(sizeof(T) * this->size);
 }
 
 template <typename T>
@@ -169,13 +170,6 @@ int List<T>::indexOf(T value)
 }
 
 template <typename T>
-void List<T>::forEach(Predicate<T> predicate)
-{
-    for (int i = 0; i < this->size; i++)
-        predicate(this->values[i], i);
-}
-
-template <typename T>
 bool List<T>::contains(T value)
 {
     if (this->isEmpty())
@@ -214,7 +208,8 @@ std::string List<T>::toString()
 template <typename T>
 void List<T>::clear()
 {
-    this->size = 0;
-
     free(this->values);
+
+    this->size = 0;
+    this->values = (T *)malloc(sizeof(T) * this->size);
 }

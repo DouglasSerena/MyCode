@@ -12,9 +12,6 @@ enum ListError
 };
 
 template <typename T>
-using Predicate = void (*)(T value, int index);
-
-template <typename T>
 class List
 {
 private:
@@ -89,11 +86,6 @@ public:
      * Returns the index of the first occurrence of a value in an list.
      */
     int indexOf(T value);
-
-    /**
-     * Performs the specified action for each element in an list.
-     */
-    void forEach(Predicate<T> predicate);
 
     /**
      * Determines whether the queue is empty
